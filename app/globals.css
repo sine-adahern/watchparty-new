@@ -1,0 +1,256 @@
+:root {
+  --bg: #0f1216;
+  --panel: #171c22;
+  --panel-2: #1e252d;
+  --border: #2a323c;
+  --text: #e6eaf0;
+  --muted: #9aa4b2;
+  --accent: #4f8cff;
+  --accent-hover: #3b78f0;
+  --danger: #ff5c5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 8px 0 16px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 28px 0 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.status {
+  min-height: 1.2em;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+
+.join {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.inp {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  min-width: 160px;
+  flex: 1 1 160px;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.link {
+  background: transparent;
+  color: var(--accent);
+  padding: 6px 8px;
+}
+
+button.link:hover {
+  background: var(--panel-2);
+}
+
+.room-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  flex-wrap: wrap;
+}
+
+.call {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+  margin: 16px 0;
+  align-items: start;
+}
+
+.call .me {
+  width: 100%;
+  border-radius: 10px;
+  background: #000;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.remotes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.remotes video {
+  width: 180px;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: #000;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.player {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+  border: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 24px;
+  text-align: center;
+  background: var(--panel);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+
+.upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.library {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.library li {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.library .pick {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.library .thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+  display: block;
+}
+
+.library .name {
+  display: block;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.library .del {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.library .del:hover {
+  background: var(--danger);
+}
+
+.peers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.peers li {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .call {
+    grid-template-columns: 1fr;
+  }
+  .call .me {
+    max-width: 180px;
+  }
+}
